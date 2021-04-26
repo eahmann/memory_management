@@ -1,0 +1,9 @@
+
+r
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(œ±¸Åıÿÿÿÿ8Âœ·ƒ/
+[	java:S125"<This block of commented-out lines of code should be removed.(İÜÊÿÿÿÿÿ8Âœ·ƒ/
+x	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(ß›Ñîüÿÿÿÿ8Âœ·ƒ/
+u
+java:S1104"ZMake sortBylocation a static final constant or non-public and provide accessors if needed.(Óˆ‰¶8ñ»ƒ/
+O
+java:S1444"4Make this "public static sortBylocation" field final(Óˆ‰¶8ñ»ƒ/
