@@ -25,9 +25,7 @@ public class App extends IoClass {
 
   public App() {
     // Initialize FSB
-    fsbArrayList.add(new Fsb(1, 0, 150));
-/*    fsbArrayList.add(new Fsb(2, 14, 10));
-    fsbArrayList.add(new Fsb(3, 30, 20));*/
+    fsbArrayList.add(new Fsb(1, 0, 350));
 
     // Initialize roving pointer to FSB# 1 location
     rovingPointer = fsbArrayList.get(0).getLocation();
@@ -47,6 +45,7 @@ public class App extends IoClass {
   }
 
   public void getMemory(int allocationSize) {
+    output.println("GET_MEMORY IS RUNNING.........");
     output.println("Allocation request for " + allocationSize + " words");
     output.println();
 
@@ -79,6 +78,8 @@ public class App extends IoClass {
             fsb = fsbArrayList.get(fsbIndex + 1);
           }
 
+          output.println("Allocation was successful in location " + fsbArrayList.get(fsbIndex).getLocation());
+
           rovingPointer = fsb.getLocation();
           fsbArrayList.remove(fsbIndex);
 
@@ -87,7 +88,7 @@ public class App extends IoClass {
             fsbArrayList.get(j).setFsbNum(j + 1);
           }
 
-          output.println("Allocation was successful in location " + fsb.getLocation());
+
           break;
 
         }
@@ -115,7 +116,6 @@ public class App extends IoClass {
 
         // Restart at the beginning of array if the index is bigger than the size of array
         if (fsbIndex >= fsbArrayList.size()) {
-          output.println("restarting...");
           fsbIndex = 0;
         }
 
@@ -125,6 +125,7 @@ public class App extends IoClass {
   }
 
   public void freeMemory(int deAllocationSize, int location) {
+    output.println("FREE_MEMORY IS RUNNING.........");
     output.println("De-allocation request for " + deAllocationSize + " words at location " + location);
     // minimum de-allocation size is 2
     if (deAllocationSize >= 2) {
@@ -134,6 +135,7 @@ public class App extends IoClass {
         if (fsb.getLocation() > location) {
           fsbArrayList.add(new Fsb(1,location, deAllocationSize));
           rovingPointer = location;
+          break;
         }
       }
       // Sort the array on location parameter
